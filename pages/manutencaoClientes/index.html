@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manutenção Clientes</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script src="../../js/message/message.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#include-header").load("/exemplo-layout-bootstrap/pages/header/header.html", function (status) {
+                if (status === "error") {
+                    alert("ocorreu um erro")
+                } else {
+                    document.getElementById("titulo-site").innerHTML = "Mantenução Clientes";
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="include-header"></div>
+    <div class="border rounded p-5">
+        <form id="form-cadastro-cliente">
+            <div class="form-row">
+                <div class="form-group col-lg-6">
+                    <label for="inputName">Nome</label>
+                    <input type="text" id="inputName" class="form-control form-control" placeholder="Nome">
+                </div>
+                <div class="form-group col-6">
+                    <label for="inputSurname">Sobrenome</label>
+                    <input type="text" class="form-control" id="inputSurname" placeholder="Sobrenome">
+                </div>
+                <div class="form-group col-12">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="exemplo@exemplo.com">
+                </div>
+                <div class="form-group col-12">
+                    <label for="inputData">Data nascimento</label>
+                    <input type="date" class="form-control" id="inputData" placeholder="DD/MM/YYYY" value="{{ date('d/m/Y') }}">
+                </div>
+                <div class="form-group col-12">
+                    <button type="button" class="btn btn-primary" onclick="exibirMensagem('Deu certo')">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

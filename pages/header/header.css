@@ -1,0 +1,41 @@
+body{
+    margin: 1% 10% 0 10%;
+}
+header {
+    padding-bottom: 2%;
+}
+
+.div-header {
+    display: flex;
+    max-width: 100%;
+    padding-bottom: 5px;
+}
+
+.logo {
+    width: 100px;
+    height: 59px;
+}
+
+.titulo-site {
+    display: flex;
+    width: 90%;
+    justify-content: center;;
+    color: #004A8D;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px black;
+}
+
+.bg-menu {
+    background-color: #004A8D;
+    border-radius: 5px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #F7941D;
+}
+
+a:hover {
+    background-color: #F7941D;
+}
