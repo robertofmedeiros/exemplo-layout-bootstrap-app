@@ -15,6 +15,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
     <script src="../../js/message/message.js"></script>
 
@@ -28,6 +29,30 @@
                 }
             });
         });
+
+        function validarCampos() {
+            console.log("Teste");
+
+            const inputName = document.getElementById("inputName");
+            if (!inputName.value) {
+                inputName.classList.remove("is-valid");
+                inputName.classList.add("is-invalid");
+            } else {
+                inputName.classList.remove("is-invalid");
+                inputName.classList.add("is-valid");
+            }
+        }
+
+        function limparCampos() {
+            const inputs = document.getElementsByTagName("input");
+
+            for(const input of inputs) {
+                input.value = "";
+                inputName.classList.remove("is-valid");
+                inputName.classList.remove("is-invalid");
+            }
+            
+        }
     </script>
 </head>
 
@@ -36,27 +61,68 @@
     <div class="border rounded p-5">
         <form id="form-cadastro-cliente">
             <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="inputName">CPF</label>
+                    <input type="text" id="inputDocumento" class="form-control form-control" placeholder="CPF" maxlength="14">
+                    <script>
+                        $("#inputDocumento").mask("###.###.###-##");
+                    </script>
+                    <div class="invalid-feedback">
+                        Nome do cliente invalido!
+                    </div>
+                </div>
                 <div class="form-group col-lg-6">
                     <label for="inputName">Nome</label>
                     <input type="text" id="inputName" class="form-control form-control" placeholder="Nome">
+                    <div class="invalid-feedback">
+                        Nome do cliente invalido!
+                    </div>
                 </div>
                 <div class="form-group col-6">
                     <label for="inputSurname">Sobrenome</label>
                     <input type="text" class="form-control" id="inputSurname" placeholder="Sobrenome">
+                    <div class="invalid-feedback">
+                        Sobrenome do cliente invalido!
+                    </div>
                 </div>
                 <div class="form-group col-12">
                     <label for="inputEmail">Email</label>
                     <input type="email" class="form-control" id="inputEmail" placeholder="exemplo@exemplo.com">
+                    <div class="invalid-feedback">
+                        Email do cliente invalido!
+                    </div>
                 </div>
                 <div class="form-group col-12">
                     <label for="inputData">Data nascimento</label>
-                    <input type="date" class="form-control" id="inputData" placeholder="DD/MM/YYYY" value="{{ date('d/m/Y') }}">
+                    <input type="date" class="form-control" id="inputData" placeholder="DD/MM/YYYY">
                 </div>
                 <div class="form-group col-12">
-                    <button type="button" class="btn btn-primary" onclick="exibirMensagem('Deu certo')">Salvar</button>
+                    <div class="div-botoes">
+                        <button type="button" class="btn btn-primary" onclick="validarCampos()">Salvar</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="limparCampos()">Limpar</button>
+                    </div>
                 </div>
             </div>
         </form>
+
+        <script type="text/javascript">
+            const form = document.getElementById("form-cadastro-cliente");
+
+            form.addEventListener("submit", function (evento) {
+                console.log("Teste");
+                evento.preventDefault();
+                evento.stopPropagation();
+
+                const inputName = document.getElementById("inputName");
+                if (!inputName.value) {
+                    inputName.classList.remove("is-valid");
+                    inputName.classList.add("is-invalid");
+                } else {
+                    inputName.classList.remove("is-invalid");
+                    inputName.classList.add("is-valid");
+                }
+            }, false);
+        </script>
     </div>
 </body>
 
